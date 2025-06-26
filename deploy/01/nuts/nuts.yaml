@@ -1,0 +1,11 @@
+strictmode: false
+datadir: /nuts/data
+didmethods: nuts
+tls:
+  truststorefile: /nuts/certs/truststore-development.pem
+  certfile: /nuts/certs/localhost-development.pem
+  certkeyfile: /nuts/certs/localhost-development.key
+# network:
+#   nodedid: did:nuts:CRsY5Uh9N5XchGzZ9MZF3vmq2LzRQUKVQQJTALASbnrB
+#   bootstrapnodes:
+#     - nuts-stable.woutslakhorst.nl:5555
