@@ -1,4 +1,4 @@
-/deploy/**/data
+/nuts/**/data
 /nuts-development-network-ca
 
 # Created by https://www.toptal.com/developers/gitignore/api/csharp,dotnetcore,jetbrains

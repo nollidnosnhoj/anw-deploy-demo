@@ -1,0 +1,19 @@
+strictmode: false
+datadir: /nuts/data
+didmethods: nuts
+tls:
+    truststorefile: /nuts/certs/truststore-stable.pem
+    certfile: /nuts/certs/nuts.nollidnosnhoj.com-stable.pem
+    certkeyfile: /nuts/certs/nuts.nollidnosnhoj.com-stable.key
+    offload: incoming
+    certheader: X-SSL-CERT
+http:
+    public:
+        address: :8080
+    internal:
+        address: :8081
+
+network:
+    # nodedid: did:nuts:CRsY5Uh9N5XchGzZ9MZF3vmq2LzRQUKVQQJTALASbnrB
+    bootstrapnodes:
+        - nuts-stable.woutslakhorst.nl:5555

@@ -1,38 +1,41 @@
 services:
-  nuts-node-one:
-    image: docker.io/nutsfoundation/nuts-node:latest
-    user: "${UID}:${GID}"
-    restart: unless-stopped
-    ports:
-      # - "8080:8080"
-      - "8081:8081"
-      # - "5555:5555"
-    volumes:
-      - ./deploy/01/nuts:/nuts
-      - ./deploy/01/nuts/data:/nuts/data:rw
-    environment:
-      NUTS_CRYPTO_STORAGE: fs
-      NUTS_HTTP_INTERNAL_ADDRESS: :8081
-      NUTS_URL: http://nuts-node-one
-      NUTS_STRICTMODE: false
-      NUTS_AUTH_CONTRACTVALIDATORS: dummy
-      NUTS_CONFIGFILE: /nuts/nuts.yaml
-    networks:
-      - nuts-network
-  nginx:
-    image: docker.io/nginx:alpine
-    container_name: nginx-proxy
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-    depends_on:
-      - nuts-node-one
-    networks:
-      - nuts-network
+    nuts-node:
+        image: docker.io/nutsfoundation/nuts-node:latest
+        container_name: nuts-node
+        user: "${UID}:${GID}"
+        restart: unless-stopped
+        # ports:
+        #   - "8080:8080"
+        #   - "8081:8081"
+        #   - "5555:5555"
+        volumes:
+            - ./nuts:/nuts
+            - ./nuts/data:/nuts/data:rw
+        environment:
+            NUTS_CRYPTO_STORAGE: fs
+            NUTS_HTTP_INTERNAL_ADDRESS: :8081
+            NUTS_URL: http://nuts-node
+            NUTS_STRICTMODE: false
+            NUTS_AUTH_CONTRACTVALIDATORS: dummy
+            NUTS_CONFIGFILE: /nuts/nuts.yaml
+        networks:
+            - nuts-network
+    nginx:
+        image: docker.io/nginx:alpine
+        container_name: nginx-proxy
+        restart: unless-stopped
+        ports:
+            - "80:80"
+            - "443:443"
+            - "5555:5555"
+        volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf
+            - ./nuts/certs:/etc/nginx/ssl
+        depends_on:
+            - nuts-node
+        networks:
+            - nuts-network
 
 networks:
-  nuts-network:
-    driver: bridge
+    nuts-network:
+        driver: bridge
