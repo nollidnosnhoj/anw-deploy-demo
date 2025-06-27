@@ -14,6 +14,6 @@ http:
         address: :8081
 
 network:
-    # nodedid: did:nuts:CRsY5Uh9N5XchGzZ9MZF3vmq2LzRQUKVQQJTALASbnrB
+    nodedid: did:nuts:5g9kBkzEfM3dBhkL5ys41ocvi7CQgeYPWDX6a8j2Bvgp
     bootstrapnodes:
         - nuts-stable.woutslakhorst.nl:5555
