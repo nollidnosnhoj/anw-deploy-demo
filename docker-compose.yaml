@@ -4,10 +4,6 @@ services:
         container_name: nuts-node
         user: "${UID}:${GID}"
         restart: unless-stopped
-        # ports:
-        #   - "8080:8080"
-        #   - "8081:8081"
-        #   - "5555:5555"
         volumes:
             - ./nuts:/nuts
             - ./nuts/data:/nuts/data:rw

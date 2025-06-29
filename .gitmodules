@@ -1,0 +1,3 @@
+[submodule "nuts-development-network-ca"]
+	path = nuts-development-network-ca
+	url = https://github.com/nuts-foundation/nuts-development-network-ca.git
